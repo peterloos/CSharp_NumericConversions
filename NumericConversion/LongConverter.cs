@@ -6,8 +6,8 @@ namespace NumericConversion
     public class LongConverter : IConvertLong
     {
         private long number;     // number to convert
-        private String result;  // result of conversion
-        private int groupSize;  // number of bits in a group
+        private String result;   // result of conversion
+        private int groupSize;   // number of bits in a group
 
         // c'tor
         public LongConverter()
@@ -44,7 +44,12 @@ namespace NumericConversion
 
             if (n == 0)
             {
-                sb.Append("0000");
+                if (this.groupSize == 4)
+                    sb.Append("0000");
+                else if (this.groupSize == 8)
+                    sb.Append("00000000");
+                else 
+                    sb.Append("0000");
             }
             else
             {
@@ -55,6 +60,54 @@ namespace NumericConversion
                     n /= 2;
 
                     sb.Insert(0, (rest == 1) ? "1" : "0");
+
+                    separator++;
+                    if (separator % this.groupSize == 0 && n != 0)
+                        sb.Insert(0, " ");
+                }
+
+                // add leading zero's
+                while (separator % this.groupSize != 0)
+                {
+                    sb.Insert(0, "0");
+                    separator++;
+                }
+            }
+
+            this.result = sb.ToString();
+        }
+
+        public void ConvertHexadecimal()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            long n = this.number;
+
+            if (n == 0)
+            {
+                if (this.groupSize == 4)
+                    sb.Append("0000");
+                else if (this.groupSize == 8)
+                    sb.Append("00000000");
+                else
+                    sb.Append("0000");
+            }
+            else
+            {
+                int separator = 0;
+                while (n != 0)
+                {
+                    long rest = n % 16;
+                    n /= 16;
+
+                    if (rest >= 0 && rest < 9)
+                    {
+                        sb.Insert(0, (char) ('0' + rest));
+                    }
+                    else
+                    {
+                        sb.Insert(0, (char)('A' + (rest - 10)));
+                    }
 
                     separator++;
                     if (separator % this.groupSize == 0 && n != 0)
@@ -98,11 +151,6 @@ namespace NumericConversion
             }
 
             this.result = sb.ToString();
-        }
-
-        public void ConvertHexadecimal()
-        {
-
         }
 
         // overrides

@@ -54,7 +54,9 @@ namespace NumericConversion
 
         public void ConvertHexadecimal()
         {
-
+            this.conv.Number = this.Number;
+            this.conv.ConvertHexadecimal();
+            this.result = this.conv.Result;
         }
 
         // overrides

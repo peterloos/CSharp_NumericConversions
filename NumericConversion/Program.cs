@@ -6,51 +6,59 @@ namespace NumericConversion
     {
         public static void Main()
         {
-            //Test01();
-            //Test01a();
+            // Test01();
+            // Test01a();
             //Test01b();
             //Test01c();
             //Test01d();
 
-            //Test02();
+            // Test02();
             //Test02a();
             //Test02b();
             //Test02c();
             //Test02d();
 
 
-            //Test03a();
+            Test03a();
             //Test03b();
 
             //Test04a();
             //Test04b();
             // Test04c();
             // Test05a();
-            Test05b();
+            //Test05b();
         }
 
         private static void Test01()
         {
             IntegerConverter conv = new IntegerConverter();
             conv.Number = 65535;
-            Console.Write("{0}: ", conv.Number);
+            Console.WriteLine("{0}: ", conv.Number);
             conv.GroupSize = 8;
             conv.ConvertBinary();
+            Console.WriteLine(conv.Result);
+            conv.ConvertHexadecimal();
             Console.WriteLine(conv.Result);
             conv.Number = 65536;
-            Console.Write("{0}: ", conv.Number);
+            Console.WriteLine("{0}: ", conv.Number);
             conv.GroupSize = 8;
             conv.ConvertBinary();
             Console.WriteLine(conv.Result);
+            conv.ConvertHexadecimal();
+            Console.WriteLine(conv.Result);
             conv.Number = 255;
-            Console.Write("{0}: ", conv.Number);
+            Console.WriteLine("{0}: ", conv.Number);
             conv.GroupSize = 4;
             conv.ConvertBinary();
             Console.WriteLine(conv.Result);
+            conv.ConvertHexadecimal();
+            Console.WriteLine(conv.Result);
             conv.Number = 256;
-            Console.Write("{0}: ", conv.Number);
+            Console.WriteLine("{0}: ", conv.Number);
             conv.GroupSize = 4;
             conv.ConvertBinary();
+            Console.WriteLine(conv.Result);
+            conv.ConvertHexadecimal();
             Console.WriteLine(conv.Result);
         }
 
@@ -62,6 +70,9 @@ namespace NumericConversion
             Console.WriteLine("{0}: ", conv.Number);
             conv.GroupSize = 8;
             conv.ConvertBinary();
+            Console.WriteLine(conv.Result);
+            conv.GroupSize = 4;
+            conv.ConvertHexadecimal();
             Console.WriteLine(conv.Result);
         }
 
@@ -92,19 +103,23 @@ namespace NumericConversion
             Console.WriteLine(conv.Result);
         }
 
-
         private static void Test02()
         {
             LongConverter conv = new LongConverter();
             conv.Number = 123456789;
-            Console.Write("{0}: ", conv.Number);
+            Console.WriteLine("{0}: ", conv.Number);
             conv.GroupSize = 8;
             conv.ConvertBinary();
             Console.WriteLine(conv.Result);
+            conv.GroupSize = 4;
+            conv.ConvertHexadecimal();
+            Console.WriteLine(conv.Result);
             conv.Number = 987654321;
-            Console.Write("{0}: ", conv.Number);
+            Console.WriteLine("{0}: ", conv.Number);
             conv.GroupSize = 4;
             conv.ConvertBinary();
+            Console.WriteLine(conv.Result);
+            conv.ConvertHexadecimal();
             Console.WriteLine(conv.Result);
         }
 
@@ -157,11 +172,23 @@ namespace NumericConversion
             Console.WriteLine(conv.Result);
         }
 
+        //private static void Test03a()
+        //{
+        //    BigNumberConverter conv = new BigNumberConverter();
+        //    conv.Number = new BigNumber("12345678987654321"); ;
+        //    //conv.ConvertBinary();
+        //    //Console.WriteLine(conv.Result);
+        //    conv.ConvertHexadecimal();
+        //    Console.WriteLine(conv.Result);
+        //}
+
         private static void Test03a()
         {
             BigNumberConverter conv = new BigNumberConverter();
-            conv.Number = new BigNumber("12345678987654321"); ;
-            conv.ConvertBinary();
+            conv.Number = new BigNumber("17"); ;
+            //conv.ConvertBinary();
+            //Console.WriteLine(conv.Result);
+            conv.ConvertHexadecimal();
             Console.WriteLine(conv.Result);
         }
 
