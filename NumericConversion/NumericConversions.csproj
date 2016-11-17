@@ -44,7 +44,6 @@
     <Compile Include="BigNumberConverter.cs" />
     <Compile Include="BigNumber.cs" />
     <Compile Include="IntegerConverter.cs" />
-    <Compile Include="DualBCDConverter.cs" />
     <Compile Include="IConvert.cs" />
     <Compile Include="IConvertBigNumber.cs" />
     <Compile Include="IConvertInteger.cs" />
