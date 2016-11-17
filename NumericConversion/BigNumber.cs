@@ -52,7 +52,6 @@ namespace NumericConversion
             }
         }
 
-
         // methods
         public BigNumber DivideByTwo()
         {
@@ -68,7 +67,6 @@ namespace NumericConversion
 
             return new BigNumber(result.ToString());
         }
-
 
         public int RemainderModulusTwo()
         {

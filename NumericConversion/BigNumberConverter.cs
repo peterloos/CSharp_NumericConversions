@@ -73,25 +73,6 @@ namespace NumericConversion
             this.result = sb.ToString();
         }
 
-        //public void ConvertHexadecimal()
-        //{
-        //    StringBuilder sb = new StringBuilder("");
-
-        //    int separator = 0;
-
-        //    while (!number.IsNull)
-        //    {
-        //        sb.Insert(0, (number.RemainderModulusTwo() == 1) ? "1" : "0");
-        //        number = number.DivideByTwo();
-
-        //        separator++;
-        //        if (separator % this.groupSize == 0 && !number.IsNull)
-        //            sb.Insert(0, " ");
-        //    }
-
-        //    this.result = sb.ToString();
-        //}
-
         public void ConvertHexadecimal()
         {
             StringBuilder sb = new StringBuilder("");
@@ -100,14 +81,18 @@ namespace NumericConversion
 
             while (!number.IsNull)
             {
-                int remainder = 0;
+                int rem1 = number.RemainderModulusTwo();
+                number = number.DivideByTwo();
+                int rem2 = number.RemainderModulusTwo();
+                number = number.DivideByTwo();
+                int rem3 = number.RemainderModulusTwo();
+                number = number.DivideByTwo();
+                int rem4 = number.RemainderModulusTwo();
+                number = number.DivideByTwo();
 
-                remainder = 2 * remainder + number.RemainderModulusTwo();
-                remainder = 2 * remainder + number.RemainderModulusTwo();
-                remainder = 2 * remainder + number.RemainderModulusTwo();
-                remainder = 2 * remainder + number.RemainderModulusTwo();
+                int remainder = rem1 + 2 * (rem2 + 2 * (rem3 + 2 * rem4));
 
-                if (remainder >= 0 && remainder < 9)
+                if (remainder >= 0 && remainder < 10)
                 {
                     sb.Insert(0, (char)('0' + remainder));
                 }
@@ -115,11 +100,6 @@ namespace NumericConversion
                 {
                     sb.Insert(0, (char)('A' + (remainder - 10)));
                 }
-
-                number = number.DivideByTwo();
-                number = number.DivideByTwo();
-                number = number.DivideByTwo();
-                number = number.DivideByTwo();
 
                 separator++;
                 if (separator % this.groupSize == 0 && !number.IsNull)
