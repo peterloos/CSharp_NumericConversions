@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NumericConversion
 {
-    public class BigNumber
+    public class BigNumber : ICloneable
     {
         private List<int> numbers;
 
@@ -18,6 +18,11 @@ namespace NumericConversion
                 this.numbers.Add(s[i] - '0');
 
             this.RemoveLeadingZeroes();
+        }
+
+        private BigNumber(List<int> numbers)
+        {
+            this.numbers = new List<int>(numbers);
         }
 
         // properties
@@ -99,6 +104,12 @@ namespace NumericConversion
                 sb.Append(this.numbers[i]);
 
             return sb.ToString();
+        }
+
+        // implementation of interface 'ICloneable'
+        public Object Clone()
+        {
+            return new BigNumber(this.numbers);
         }
     }
 }

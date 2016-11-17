@@ -56,10 +56,10 @@ namespace NumericConversion
                 int separator = 0;
                 while (n != 0)
                 {
-                    long rest = n % 2;
+                    long remainder = n % 2;
                     n /= 2;
 
-                    sb.Insert(0, (rest == 1) ? "1" : "0");
+                    sb.Insert(0, (remainder == 1) ? "1" : "0");
 
                     separator++;
                     if (separator % this.groupSize == 0 && n != 0)

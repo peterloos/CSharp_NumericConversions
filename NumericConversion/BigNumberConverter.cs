@@ -79,16 +79,18 @@ namespace NumericConversion
 
             int separator = 0;
 
-            while (!number.IsNull)
+            BigNumber num = (BigNumber) this.number.Clone();
+
+            while (!num.IsNull)
             {
-                int rem1 = number.RemainderModulusTwo();
-                number = number.DivideByTwo();
-                int rem2 = number.RemainderModulusTwo();
-                number = number.DivideByTwo();
-                int rem3 = number.RemainderModulusTwo();
-                number = number.DivideByTwo();
-                int rem4 = number.RemainderModulusTwo();
-                number = number.DivideByTwo();
+                int rem1 = num.RemainderModulusTwo();
+                num = num.DivideByTwo();
+                int rem2 = num.RemainderModulusTwo();
+                num = num.DivideByTwo();
+                int rem3 = num.RemainderModulusTwo();
+                num = num.DivideByTwo();
+                int rem4 = num.RemainderModulusTwo();
+                num = num.DivideByTwo();
 
                 int remainder = rem1 + 2 * (rem2 + 2 * (rem3 + 2 * rem4));
 
@@ -102,7 +104,7 @@ namespace NumericConversion
                 }
 
                 separator++;
-                if (separator % this.groupSize == 0 && !number.IsNull)
+                if (separator % this.groupSize == 0 && !num.IsNull)
                     sb.Insert(0, " ");
             }
 

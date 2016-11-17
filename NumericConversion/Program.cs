@@ -6,27 +6,28 @@ namespace NumericConversion
     {
         public static void Main()
         {
-            Test01();
-            Test01a();
-            Test01b();
-            Test01c();
-            Test01d();
+            //Test01();
+            //Test01a();
+            //Test01b();
+            //Test01c();
+            //Test01d();
 
-            Test02();
-            Test02a();
-            Test02b();
-            Test02c();
-            Test02d();
+            //Test02();
+            //Test02a();
+            //Test02b();
+            //Test02c();
+            //Test02d();
 
-            Test03a();
-            Test03b();
-            Test03c();
+            //Test03a();
+            //Test03b();
+            //Test03c();
+            Test03d();
 
-            Test04a();
-            Test04b();
-            Test04c();
-            Test05a();
-            Test05b();
+            //Test04a();
+            //Test04b();
+            //Test04c();
+            //Test05a();
+            //Test05b();
         }
 
         private static void Test01()
@@ -174,8 +175,6 @@ namespace NumericConversion
         {
             BigNumberConverter conv = new BigNumberConverter();
             conv.Number = new BigNumber("40613"); ;
-            //conv.ConvertBinary();
-            //Console.WriteLine(conv.Result);
             conv.ConvertHexadecimal();
             Console.WriteLine(conv.Result);
         }
@@ -184,8 +183,6 @@ namespace NumericConversion
         {
             BigNumberConverter conv = new BigNumberConverter();
             conv.Number = new BigNumber("12345678987654321"); ;
-            //conv.ConvertBinary();
-            //Console.WriteLine(conv.Result);
             conv.ConvertHexadecimal();
             Console.WriteLine(conv.Result);
         }
@@ -194,6 +191,16 @@ namespace NumericConversion
         {
             BigNumberConverter conv = new BigNumberConverter();
             conv.Number = new BigNumber("11111111111111111111111111111111111111111111111111111111111111111111111111"); ;
+            conv.ConvertHexadecimal();
+            Console.WriteLine(conv.Result);
+        }
+
+        private static void Test03d()
+        {
+            BigNumberConverter conv = new BigNumberConverter();
+            conv.Number = new BigNumber("1111111111111111111"); ;
+            conv.ConvertHexadecimal();
+            Console.WriteLine(conv.Result);
             conv.ConvertBinary();
             Console.WriteLine(conv.Result);
         }
@@ -253,11 +260,11 @@ namespace NumericConversion
 
         private static void Test05b()
         {
-        BigNumberConverter conv = new BigNumberConverter();
-        conv.Number = new BigNumber("123456789");
-        Console.Write("{0}: ", conv.Number);
-        conv.ConvertDualBCD();
-        Console.WriteLine(conv.Result);
+            BigNumberConverter conv = new BigNumberConverter();
+            conv.Number = new BigNumber("123456789");
+            Console.Write("{0}: ", conv.Number);
+            conv.ConvertDualBCD();
+            Console.WriteLine(conv.Result);
         }
     }
 }
